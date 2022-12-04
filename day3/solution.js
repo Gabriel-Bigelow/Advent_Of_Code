@@ -9,6 +9,7 @@ const reader = readline.createInterface({
 
 
 const commonItems = [];
+let unsortedRucksacks = [];
 
 function splitRucksack(data) {
     unsortedRucksacks.push(data);
@@ -37,7 +38,7 @@ function translateCharCode (char, index) {
 }
 
 let elfGroups = [];
-let unsortedRucksacks = [];
+
 
 function groupElves () {
     let group = {
@@ -84,5 +85,3 @@ function logSums () {
 
 reader.on('line', splitRucksack);
 reader.on('close', logSums);
-
-//reader.on('line', )
