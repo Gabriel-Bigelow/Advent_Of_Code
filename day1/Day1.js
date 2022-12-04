@@ -251,11 +251,12 @@ let elves = [
     [3533, 4991, 2034, 3914, 5920, 2455, 2660, 3175, 1410, 1127, 2272, 3689, 5804, 1311, 1121]
 ]
 
-
 let most = {
     elf: 0,
     calories: 0
 }
+
+let mostArray = [];
 
 let totalCaloriesPerElf = elves.map(elf => {
     let caloriesTotal = 0;
@@ -269,4 +270,22 @@ let totalCaloriesPerElf = elves.map(elf => {
     return caloriesTotal;
 })
 
+while (mostArray.length < 3) {
+    let mostCalories = 0;
+    totalCaloriesPerElf.forEach(totalCalories => {
+        if (totalCalories > mostCalories) {
+            mostCalories = totalCalories;
+        }
+    })
+    mostArray.push(mostCalories);
+    totalCaloriesPerElf.splice(totalCaloriesPerElf.indexOf(mostCalories), 1);
+}
+
+let topThree = 0;
+mostArray.forEach(amount => {
+    topThree += amount;
+})
+
 console.log(most);
+console.log(mostArray);
+console.log(`Sum of top three: ${topThree}`);
