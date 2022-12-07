@@ -6,21 +6,16 @@ const reader = readline.createInterface({
 })
 
 function findSignalMarker (data) {
-    //console.log(data)
-
-    let transmission = data;
     let signalMarker = '';
     let signalFound = false;
+    let markerIndex = 0;
+    
     let message = '';
     let messageFound = false;
-
-    let markerIndex = 0;
     let messageIndex = 0;
-    while (!signalFound) {
-        signalMarker = transmission.substr(markerIndex, 4);
-        //console.log(signalMarker);
-        
 
+    while (!signalFound) {
+        signalMarker = data.substr(markerIndex, 4);
         let similarChars = 0;
 
         for (let i = 0; i < signalMarker.length; i++) {
@@ -41,9 +36,7 @@ function findSignalMarker (data) {
     }
 
     while (!messageFound) {
-        //console.log('searching for message');
-        message = transmission.substr(messageIndex, 14);
-
+        message = data.substr(messageIndex, 14);
         let similarChars = 0;
 
         for (let i = 0; i < message.length; i++) {
@@ -61,7 +54,6 @@ function findSignalMarker (data) {
         } else {
             messageIndex++;
         }
-
     }
 }
 
